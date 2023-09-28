@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>{{ page.title }} .:. Playorama</title>
+	<link rel="stylesheet" href="/assets/css/style.css" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="{{ site.url }}{{ page.url }}" />
+	<meta name="color-scheme" content="light dark" />
+</head>
+<body>
+	<div class="page{{ page.name | remove: '.html' | slugify | default: 'default' | prepend: ' page--' }}">
+		{% include header.html %}
+		<main class="main" role="main">
+			{{ content }}
+		</main>
+		{% include footer.html %}
+	</div>
+	<script src="/assets/js/playorama.js" defer></script>
+</body>
+</html>
