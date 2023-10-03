@@ -47,6 +47,10 @@
 	color: $color-yellow;
 	background-color: black;
 
+	&:is(:hover, :focus) {
+		opacity: 0.7;
+	}
+
 	&:is(:active, :focus) {
 		outline-color: black;
 	}
