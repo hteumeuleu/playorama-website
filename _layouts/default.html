@@ -9,6 +9,10 @@
 	<meta property="og:url" content="{{ site.url }}{{ page.url }}" />
 	<meta name="color-scheme" content="light dark" />
 	{%- assign slug = page.name | remove: '.html' | slugify | default: 'default' -%}
+	{% if slug == "encoder" %}
+	<link rel="stylesheet" href="{{ 'assets/css/pdv.css?v=' | append: timestamp | relative_url }}" />
+	<script src="{{ 'assets/js/pdv.js?v=' | append: timestamp | relative_url }}"></script>
+	{% endif %}
 </head>
 <body>
 	<div class="page{{ slug | prepend: ' page--' }}">
@@ -21,8 +25,5 @@
 		{% include footer.html %}
 	</div>
 	<script src="{{ 'assets/js/playorama.js?v=' | append: timestamp | relative_url }}" defer></script>
-	{% if slug == "encoder" %}
-	<script src="{{ 'assets/js/pdv.js?v=' | append: timestamp | relative_url }}"></script>
-	{% endif %}
 </body>
 </html>
