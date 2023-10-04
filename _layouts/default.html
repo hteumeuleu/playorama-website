@@ -3,14 +3,15 @@
 <head>
 	<meta charset="utf-8" />
 	<title>{{ page.title }} .:. Playorama</title>
-	<link rel="stylesheet" href="/assets/css/style.css" />
+	<link rel="stylesheet" href="{{ 'assets/css/style.css?v=' | append: timestamp | relative_url }}" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<meta property="og:type" content="website" />
 	<meta property="og:url" content="{{ site.url }}{{ page.url }}" />
 	<meta name="color-scheme" content="light dark" />
+	{%- assign slug = page.name | remove: '.html' | slugify | default: 'default' -%}
 </head>
 <body>
-	<div class="page{{ page.name | remove: '.html' | slugify | default: 'default' | prepend: ' page--' }}">
+	<div class="page{{ slug | prepend: ' page--' }}">
 		{% include header.html %}
 		<main class="main" role="main">
 			<div class="wrapper">
@@ -19,6 +20,9 @@
 		</main>
 		{% include footer.html %}
 	</div>
-	<script src="/assets/js/playorama.js" defer></script>
+	<script src="{{ 'assets/js/playorama.js?v=' | append: timestamp | relative_url }}" defer></script>
+	{% if slug == "encoder" %}
+	<script src="{{ 'assets/js/pdv.js?v=' | append: timestamp | relative_url }}"></script>
+	{% endif %}
 </body>
 </html>
