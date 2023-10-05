@@ -4,10 +4,10 @@
 			<a href="/"><img class="header-logo-img" src="/assets/images/logo.png" alt="Playorama" width="120" height="28" /></a>
 		</div>
 		<nav class="header-nav" role="navigation" aria-label="Main menu">
-			<a class="header-nav-link" href="/videos/sample/">Play</a>
-			<a class="header-nav-link" href="/encoder/">Encode</a>
-			<a class="header-nav-link" href="/stream/">Stream</a>
-			<a class="header-nav-btn" href="https://hteumeuleu.itch.io/playorama/">Download on itch.io</a>
+			<a {% if slug == 'videos' %}aria-current="page"{% endif %} class="header-nav-link" href="/videos/">Play</a>
+			<a {% if slug == 'encoder' %}aria-current="page"{% endif %} class="header-nav-link" href="/encoder/">Encode</a>
+			<a {% if slug == 'stream' %}aria-current="page"{% endif %} class="header-nav-link" href="/stream/">Stream</a>
+			<a class="header-nav-btn" href="https://hteumeuleu.itch.io/playorama/" target="_blank" rel="noopener">Download on itch.io</a>
 		</nav>
 	</div>
 </header>

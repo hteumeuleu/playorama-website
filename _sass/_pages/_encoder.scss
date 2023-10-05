@@ -4,4 +4,13 @@
 	.header {
 		border-bottom-color: transparent;
 	}
+
+	.main {
+		display: flex;
+		flex-direction: column;
+
+		& > .wrapper {
+			margin: auto;
+		}
+	}
 }

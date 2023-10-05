@@ -1,10 +1,15 @@
 {%- assign timestamp = site.time | date:'%Y%m%d%I%M%S%L' -%}
 {%- assign slug = page.name | remove: '.html' | slugify | default: 'default' -%}
+{% if slug == 'default' %}
+	{% if page.collection == 'videos' %}
+		{%- assign slug = 'videos' -%}
+	{% endif %}
+{% endif %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="utf-8" />
-	<title>{{ page.title }} .:. Playorama</title>
+	<title>{{ page.title }} - Playorama</title>
 	<link rel="stylesheet" href="{{ 'assets/css/style.css?v=' | append: timestamp | relative_url }}" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<meta property="og:type" content="website" />

@@ -1,0 +1,30 @@
+.page--home {
+	.hero {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		text-align: center;
+		font-size: rem(20px);
+		line-height: 1.1;
+		color: #000;
+
+		h1 {
+			font-weight: 900;
+		}
+
+		@media only screen and (min-width: rem(800px)) {
+			min-height: rem(400px);
+			font-size: rem(40px);
+			margin-inline: calc((100vw - #{rem(800px)}) / 4 * -1);
+		}
+	}
+	.features-list {
+		margin-block: rem(24px);
+		text-align: center;
+		list-style-position: inside;
+
+		li:not(:last-child) {
+			margin-bottom: rem(4px);
+		}
+	}
+}
