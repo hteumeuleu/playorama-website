@@ -1,6 +1,6 @@
 ---
 layout: null
-permalink: "/assets/js/pdv.js"
+permalink: "/assets/js/encoder.js"
 ---
 {% include_relative _preview.js %}
 {% include_relative _form.js %}

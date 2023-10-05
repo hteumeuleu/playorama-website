@@ -1,3 +1,5 @@
+{%- assign timestamp = site.time | date:'%Y%m%d%I%M%S%L' -%}
+{%- assign slug = page.name | remove: '.html' | slugify | default: 'default' -%}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,10 +10,9 @@
 	<meta property="og:type" content="website" />
 	<meta property="og:url" content="{{ site.url }}{{ page.url }}" />
 	<meta name="color-scheme" content="light dark" />
-	{%- assign slug = page.name | remove: '.html' | slugify | default: 'default' -%}
 	{% if slug == "encoder" %}
-	<link rel="stylesheet" href="{{ 'assets/css/pdv.css?v=' | append: timestamp | relative_url }}" />
-	<script src="{{ 'assets/js/pdv.js?v=' | append: timestamp | relative_url }}"></script>
+	<link rel="stylesheet" href="{{ 'assets/css/encoder.css?v=' | append: timestamp | relative_url }}" />
+	<script src="{{ 'assets/js/encoder.js?v=' | append: timestamp | relative_url }}"></script>
 	{% endif %}
 </head>
 <body>

@@ -5,15 +5,19 @@ input::file-selector-button {
 	align-items: center;
 	justify-content: center;
 	padding: rem(8px) rem(16px);
-	color: $white;
-	background-color: $purple;
-	border-radius: rem(24px);
+	color: #fff;
+	background-color: $color-purple;
+	border-radius: rem(18px);
 	border: none;
 	appearance: none;
 	cursor: pointer;
 	font-family: inherit;
 	font-size: inherit;
 	font-weight: inherit;
+	text-decoration: none;
+	font-weight: bold;
+	font-size: rem(20px);
+	line-height: 1;
 	text-decoration: none;
 
 	&:active {
@@ -23,11 +27,13 @@ input::file-selector-button {
 }
 
 input::file-selector-button {
-	background-color: $darkgrey;
+	font-size: rem(16px);
+	background-color: $color-black;
 }
 
 .button-big {
 	min-width: rem(196px);
 	min-height: rem(48px);
 	font-size: rem(20px);
+	border-radius: rem(24px);
 }
