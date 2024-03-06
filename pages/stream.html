@@ -3,12 +3,23 @@ title: Stream
 layout: default
 permalink: /stream/
 ---
-<div style="text-align:center;">
-	<p>
-		<b>Stream</b> your computer screen or your webcam to your Playdate, right <b>from your browser</b>.
-	</p>
-	<p>
-		 Coming later this year.
-	</p>
+<p class="warning">
+	<b>⚠︎ Warning!</b> This feature uses the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Serial_API#browser_compatibility">Web Serial API</a> which is not currently supported by your browser. ☹
+</p>
+<div class="app">
+	<div class="screen">
+		<canvas class="pdv-preview-canvas" id="preview" width="400" height="240"></canvas>
+		<video class="pdv-preview-video" id="source" src="/assets/videos/sample.mp4" poster="/assets/images/sample.jpg" width="400" height="240" controls loop muted hidden playsinline disablepictureinpicture controlslist="nodownload nofullscreen noremoteplayback" preload="metadata" x-webkit-airplay="deny"></video>
+	</div>
+	<div class="toolbar">
+		<button type="button" onclick="connectToPlaydate()">Connect <span>&nbsp;to your Playdate</span></button>
+		<button type="button" onclick="sendBitmap()">Stream</button>
+		<button type="button" onclick="getCamera()">Webcam</button>
+		<button type="button">Screen</button>
+	</div>
+	<div class="notice">
+		<p>
+			<b>Stream</b> your computer screen or your webcam to your Playdate, right <b>from your browser</b>.
+		</p>
+	</div>
 </div>
-<style>.main > .wrapper { margin:auto; }</style>

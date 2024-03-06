@@ -18,6 +18,9 @@
 	{% if slug == "encoder" %}
 	<link rel="stylesheet" href="{{ 'assets/css/encoder.css?v=' | append: timestamp | relative_url }}" />
 	<script src="{{ 'assets/js/encoder.js?v=' | append: timestamp | relative_url }}"></script>
+	{% else if slug == "stream" %}
+	<link rel="stylesheet" href="{{ 'assets/css/stream.css?v=' | append: timestamp | relative_url }}" />
+	<script src="{{ 'assets/js/stream.js?v=' | append: timestamp | relative_url }}"></script>
 	{% endif %}
 </head>
 <body>

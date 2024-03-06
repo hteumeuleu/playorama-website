@@ -3,3 +3,14 @@
 @import "_buttons";
 @import "_layout";
 @import "_form";
+
+.page--encoder {
+	.main {
+		display: flex;
+		flex-direction: column;
+
+		& > .wrapper {
+			margin: auto;
+		}
+	}
+}
