@@ -24,6 +24,7 @@ class pdvPreview {
 		}, false);
 
 		this.video.addEventListener('canplay', () => {
+			this.video.play();
 			this.computeFrame();
 			this.video.classList.add('show-on-hover')
 		}, false);
@@ -36,22 +37,13 @@ class pdvPreview {
 			}
 		}, false);
 
-		// Custom events created in `_form.js`
-		// document.addEventListener('pdvFormChange', () => {
-		// 	this.computeFrame();
-		// });
-
-		// document.addEventListener('pdvFormScaleChange', e => {
-		// 	this.setScale(e.detail);
-		// });
-
-		// document.addEventListener('pdvFormVideoChange', () => {
-		// 	this.setVideo();
-		// });
-
-		// document.querySelector('.pdv-form-dither').addEventListener('change', () => {
-		// 	this.setDither();
-		// });
+		this.video.addEventListener('click', () => {
+			if(this.video.paused) {
+				this.video.play();
+			} else {
+				this.video.pause();
+			}
+		}, false);
 	}
 
 	getFrame() {

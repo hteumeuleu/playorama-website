@@ -1,20 +1,20 @@
 class pdDevice {
 
 	constructor() {
-		// this.connectButton = document.querySelector('.pd-btn-connect');
+		this.warning = document.querySelector('.warning');
 		this.streamButton = document.querySelector('.pd-btn-stream');
 		this.webcamButton = document.querySelector('.pd-btn-webcam');
 		this.screenButton = document.querySelector('.pd-btn-screen');
 		if(!(navigator.serial && window.isSecureContext)) {
 			this.streamButton.setAttribute('disabled', 'disabled');
+			this.warning.style.display = 'block';
+		} else {
+			this.warning.remove();
 		}
 		this.addEvents();
 	}
 
 	addEvents() {
-		// this.connectButton.addEventListener('click', async() => {
-		// 	// this.connect();
-		// });
 		this.streamButton.addEventListener('click', async() => {
 			if(this.isStreaming === true) {
 				this.isStreaming = false
@@ -22,18 +22,14 @@ class pdDevice {
 				this.isStreaming = true
 			}
 			if(this.isStreaming) {
-				console.log("connect");
 				this.connect().then(() => {
 					app.preview.video.play()
 					this.streamButton.innerText = 'Stop streaming';
 					this.send();
 				});
 			} else {
-				console.log("disconnect");
-				this.disconnect().then(() => {
-					this.streamButton.innerText = 'Start streaming';
-					app.preview.video.pause()
-				});
+				this.streamButton.innerText = 'Start streaming';
+				app.preview.video.pause()
 			}
 		});
 		this.webcamButton.addEventListener('click', async() => {
@@ -70,27 +66,26 @@ class pdDevice {
 	}
 
 	async connect() {
-		try {
-			this.device = await pdusb.requestConnectPlaydate();
-			if (this.device == null) {
-				throw new Error('Playdate not found.');
+		if(this.device == null) {
+			try {
+				this.device = await pdusb.requestConnectPlaydate();
+				if (this.device == null) {
+					throw new Error('Playdate not found.');
+				}
+				await this.device.open();
 			}
-			await this.device.open();
-		}
-		catch(e) {
-			console.error('Cannot connect to Playdate.');
+			catch(e) {
+				console.error('Cannot connect to Playdate.');
+			}
 		}
 	}
 
 	async disconnect() {
 		try {
-			if (this.device == null) {
-				throw new Error('Playdate not found.');
-			}
 			await this.device.close();
 		}
 		catch(e) {
-			console.error('Cannot connect to Playdate.');
+			console.error('Cannot disconnect from Playdate.');
 		}
 	}
 
