@@ -24,6 +24,7 @@
 
 	.warning {
 		display: none;
+		max-width: 100%;
 		margin-block: 1rem;
 	}
 
@@ -38,6 +39,16 @@
 		margin-bottom: 1rem;
 		gap: 0.5rem;
 		width: 100%;
+		justify-content: space-between;
+
+		[disabled] ~ * {
+			display: none;
+		}
+
+		span {
+			display: flex;
+			gap: 0.5rem;
+		}
 	}
 }
 

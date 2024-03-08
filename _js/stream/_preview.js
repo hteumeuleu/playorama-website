@@ -10,7 +10,7 @@ class pdvPreview {
 		this.filter = "atkinson";
 
 		if(this.canvas && this.video) {
-			this.ctx = this.canvas.getContext('2d');
+			this.ctx = this.canvas.getContext('2d', { willReadFrequently: true });
 			this.video.volume = 0.4;
 			this.video.removeAttribute('muted');
 			this.addEvents();

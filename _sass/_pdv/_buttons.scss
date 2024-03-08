@@ -20,10 +20,16 @@ input::file-selector-button {
 	line-height: 1;
 	text-decoration: none;
 
-	&:active {
+	&:not([disabled]):active {
 		transform: translateY(#{rem(2px)});
 		transform: scale(0.94444);
 	}
+}
+
+button[disabled] {
+	cursor: not-allowed;
+	color: #212223;
+	background-color: #b1afa7;
 }
 
 input::file-selector-button {
@@ -36,4 +42,8 @@ input::file-selector-button {
 	min-height: rem(48px);
 	font-size: rem(20px);
 	border-radius: rem(24px);
+}
+
+.button-black {
+	background-color: $color-black;
 }
