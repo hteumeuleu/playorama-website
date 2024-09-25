@@ -1,8 +1,13 @@
 @media only screen and (min-width:rem(1024px)) {
 	.app {
 		display: flex;
-		flex-wrap: wrap;
-		align-items: flex-start;
+		display: flex;
+		flex-direction: column;
+
+		& > .wrapper {
+			margin: auto;
+			max-width: rem(448px);
+		}
 
 		& > * {
 			flex-shrink: 0;
@@ -12,16 +17,12 @@
 		.form {
 			padding: rem(24px);
 		}
-
-		.screen {
-			margin-bottom: 0;
-		}
 	}
 }
 
 .screen {
 	position: relative;
-	margin: 0 0 rem(16px);
+	margin: rem(16px) auto;
 	max-width: rem(400px);
 	width: calc(100% - #{rem(48px)});
 	background-color: $color-black;
@@ -36,6 +37,7 @@
 	height: auto;
 	aspect-ratio: 400 / 240;
 	background-color: #000;
+	border-radius: rem(3px);
 }
 
 #source {

@@ -4,49 +4,58 @@ layout: default
 permalink: /encoder/
 ---
 <div class="app">
-	<div class="screen">
-		<canvas class="pdv-preview-canvas" id="preview" width="400" height="240"></canvas>
-		<video class="pdv-preview-video" id="source" src="/assets/videos/sample.mp4" poster="/assets/images/sample.jpg" width="400" height="240" controls loop muted hidden playsinline disablepictureinpicture controlslist="nodownload nofullscreen noremoteplayback" preload="metadata" x-webkit-airplay="deny"></video>
+	<div class="app-notice">
+		<p>
+			<b>Encode</b> your videos for Playdate in the <b>PDV</b> format.
+		</p>
 	</div>
-	<form class="form" method="post">
-		<div>
-			<label for="input-file" class="sr-only">Video file (mp4, webm, …)</label>
-			<input id="input-file" class="pdv-form-file" type="file" accept="video/*" />
-		</div>
-		<div>
-			<label class="form-label" for="select-dither">Dither</label>
-			<select class="pdv-form-dither" id="select-dither">
-				<option value="threshold">Threshold</option>
-				<option value="bayer2" disabled>Bayer 2&times;2</option>
-				<option value="bayer4" disabled>Bayer 4&times;4</option>
-				<option value="bayer8" disabled>Bayer 8&times;8</option>
-				<option value="blue" disabled>Blue Pattern</option>
-				<option value="floydsteinberg">Floyd-Steinberg</option>
-				<option value="jarvis">Jarvis-Judice-Ninke</option>
-				<option value="stucki" selected>Stucki</option>
-				<option value="atkinson">Atkinson</option>
-				<option value="burkes">Burkes</option>
-				<option value="sierra">Sierra</option>
-				<option value="tworowsierra">Two-Row Sierra</option>
-				<option value="sierralite">Sierra Lite</option>
-			</select>
-		</div>
-		<div>
-			<span class="form-label">Scale to fit</span>
-			<div>
-				<input type="radio" name="scale" value="inside" id="input-scale-inside" />
-				<label for="input-scale-inside">inside</label>
+	<div class="app-preview">
+		<canvas class="app-preview-canvas" id="app-preview-canvas" width="400" height="240"></canvas>
+		<video class="app-preview-video" id="app-preview-video" src="/assets/videos/sample.mp4" poster="/assets/images/sample.jpg" width="400" height="240" controls loop muted hidden playsinline disablepictureinpicture controlslist="nodownload nofullscreen noremoteplayback" preload="metadata" x-webkit-airplay="deny"></video>
+	</div>
+	<form class="app-toolbar" method="post">
+		<div class="app-toolbar-fieldset">
+			<div class="app-toolbar-field">
+				<label for="input-file" class="sr-only">Video file (mp4, webm, …)</label>
+				<input id="input-file" class="pdv-form-file" type="file" accept="video/*" />
 			</div>
-			<div>
-				<input type="radio" name="scale" value="outside" id="input-scale-outside" checked />
-				<label for="input-scale-outside">outside</label>
+			<div class="app-toolbar-field">
+				<label class="app-toolbar-field-label" for="select-dither">Dither</label>
+				<select class="pdv-form-dither" id="select-dither">
+					<option value="threshold">Threshold</option>
+					<option value="bayer2" disabled>Bayer 2&times;2</option>
+					<option value="bayer4" disabled>Bayer 4&times;4</option>
+					<option value="bayer8" disabled>Bayer 8&times;8</option>
+					<option value="blue" disabled>Blue Pattern</option>
+					<option value="floydsteinberg">Floyd-Steinberg</option>
+					<option value="jarvis">Jarvis-Judice-Ninke</option>
+					<option value="stucki" selected>Stucki</option>
+					<option value="atkinson">Atkinson</option>
+					<option value="burkes">Burkes</option>
+					<option value="sierra">Sierra</option>
+					<option value="tworowsierra">Two-Row Sierra</option>
+					<option value="sierralite">Sierra Lite</option>
+				</select>
+			</div>
+			<div class="app-toolbar-field">
+				<span class="app-toolbar-field-label">Scale to fit</span>
+				<div>
+					<input type="radio" name="scale" value="inside" id="input-scale-inside" />
+					<label for="input-scale-inside">inside</label>
+				</div>
+				<div>
+					<input type="radio" name="scale" value="outside" id="input-scale-outside" checked />
+					<label for="input-scale-outside">outside</label>
+				</div>
 			</div>
 		</div>
 		<div>
-			<button class="pdv-form-button button-big" id="download" type="button" class="button">Download</button>
-		</div>
-		<div class="form-message" hidden>
-			<p>Frames processed: <span class="form-message-value"></span></p>
+			<div>
+				<button id="app-btn-download" class="btn btn--accent" id="download" type="button" class="button">Download</button>
+			</div>
+			<div class="form-message" hidden>
+				<p>Frames processed: <span class="form-message-value"></span></p>
+			</div>
 		</div>
 	</form>
 </div>
