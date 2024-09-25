@@ -23,7 +23,8 @@
 
 .header-nav {
 	display: flex;
-	gap: rem(4px);
+	column-gap: rem(4px);
+	row-gap: rem(16px);
 
 	@media only screen and (max-width: rem(768px)) {
 		flex-wrap: wrap;

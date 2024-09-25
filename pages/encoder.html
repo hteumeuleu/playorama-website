@@ -16,12 +16,12 @@ permalink: /encoder/
 	<form class="app-toolbar" method="post">
 		<div class="app-toolbar-fieldset">
 			<div class="app-toolbar-field">
-				<label for="input-file" class="sr-only">Video file (mp4, webm, …)</label>
-				<input id="input-file" class="pdv-form-file" type="file" accept="video/*" />
+				<label for="app-input-file" class="sr-only">Video file (mp4, webm, …)</label>
+				<input id="app-input-file" class="app-toolbar-field-file" type="file" accept="video/*" />
 			</div>
 			<div class="app-toolbar-field">
-				<label class="app-toolbar-field-label" for="select-dither">Dither</label>
-				<select class="pdv-form-dither" id="select-dither">
+				<label class="app-toolbar-field-label" for="app-select-dither">Dither</label>
+				<select class="app-toolbar-field-dither" id="app-select-dither">
 					<option value="threshold">Threshold</option>
 					<option value="bayer2" disabled>Bayer 2&times;2</option>
 					<option value="bayer4" disabled>Bayer 4&times;4</option>
@@ -51,10 +51,10 @@ permalink: /encoder/
 		</div>
 		<div>
 			<div>
-				<button id="app-btn-download" class="btn btn--accent" id="download" type="button" class="button">Download</button>
+				<button id="app-btn-download" class="btn btn--accent" type="button" class="button">Download</button>
 			</div>
-			<div class="form-message" hidden>
-				<p>Frames processed: <span class="form-message-value"></span></p>
+			<div class="app-message" hidden>
+				<p>Frames processed: <span class="app-message-value"></span></p>
 			</div>
 		</div>
 	</form>

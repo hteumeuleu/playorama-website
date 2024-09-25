@@ -1,7 +1,7 @@
 class pdvExport {
 
 	constructor() {
-		this.button = document.querySelector('#download');
+		this.button = document.querySelector('#app-btn-download');
 		this.addEvents();
 	}
 
@@ -24,7 +24,7 @@ class pdvExport {
 	download() {
 		// Get file name
 		let filename = 'sample.pdv';
-		const fileInput = document.querySelector('.pdv-form-file')
+		const fileInput = document.querySelector('#app-input-file')
 		if (fileInput.files.length) {
 			filename = fileInput.files[0].name;
 			filename = filename.substring(0, filename.lastIndexOf('.'))

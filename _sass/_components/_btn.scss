@@ -5,7 +5,7 @@
 	padding: rem(8px) rem(16px);
 	color: #fff;
 	background-color: $color-black;
-	border-radius: rem(18px);
+	border-radius: rem(32px);
 	border: none;
 	appearance: none;
 	cursor: pointer;
@@ -36,4 +36,10 @@ input::file-selector-button {
 
 .btn--accent {
 	background-color: $color-purple;
+
+	@media only screen and (max-width: rem(480px)) {
+		padding-block: rem(12px);
+		width: 100%;
+		font-size: rem(20px);
+	}
 }

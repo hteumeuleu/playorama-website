@@ -1,8 +1,8 @@
 class pdvForm {
 
 	constructor() {
-		this.form = document.querySelector('form');
-		this.message = document.querySelector('.form-message');
+		this.form = document.querySelector('.app-toolbar');
+		this.message = document.querySelector('.app-message');
 		this.addEvents();
 	}
 
@@ -28,15 +28,15 @@ class pdvForm {
 		});
 
 		// Dither select
-		const ditherSelect = document.querySelector('.pdv-form-dither')
+		const ditherSelect = document.querySelector('#app-select-dither')
 		ditherSelect.addEventListener('focus', e => {
 			if(app && app.preview && app.preview.video) {
-				app.preview.video.classList.remove('show-on-hover');
+				app.preview.video.classList.remove('is-visible-on-hover');
 			}
 		});
 		ditherSelect.addEventListener('blur', e => {
 			if(app && app.preview && app.preview.video) {
-				app.preview.video.classList.add('show-on-hover');
+				app.preview.video.classList.add('is-visible-on-hover');
 			}
 		});
 	}
@@ -70,6 +70,6 @@ class pdvForm {
 	}
 
 	updateMessage(value) {
-		this.message.querySelector('.form-message-value').innerHTML = value;
+		this.message.querySelector('.app-message-value').innerHTML = value;
 	}
 }

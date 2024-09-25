@@ -1,10 +1,10 @@
 class pdDevice {
 
 	constructor() {
-		this.warning = document.querySelector('.warning');
-		this.streamButton = document.querySelector('.pd-btn-stream');
-		this.webcamButton = document.querySelector('.pd-btn-webcam');
-		this.screenButton = document.querySelector('.pd-btn-screen');
+		this.warning = document.querySelector('.app-notice');
+		this.streamButton = document.querySelector('#app-btn-stream');
+		this.webcamButton = document.querySelector('#app-btn-webcam');
+		this.screenButton = document.querySelector('#app-btn-screen');
 		if(!(navigator.serial && window.isSecureContext)) {
 			this.streamButton.setAttribute('disabled', 'disabled');
 			this.warning.style.display = 'block';

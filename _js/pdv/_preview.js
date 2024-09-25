@@ -1,8 +1,8 @@
 class pdvPreview {
 
 	constructor() {
-		this.canvas = document.querySelector('.pdv-preview-canvas');
-		this.video = document.querySelector('.pdv-preview-video');
+		this.canvas = document.querySelector('.app-preview-canvas');
+		this.video = document.querySelector('.app-preview-video');
 		this.width = 400;
 		this.height = 240;
 		this.scale = "outside";
@@ -25,7 +25,7 @@ class pdvPreview {
 
 		this.video.addEventListener('canplay', () => {
 			this.computeFrame();
-			this.video.classList.add('show-on-hover')
+			this.video.classList.add('is-visible-on-hover')
 		}, false);
 
 		this.canvas.addEventListener('click', () => {
@@ -49,7 +49,7 @@ class pdvPreview {
 			this.setVideo();
 		});
 
-		document.querySelector('.pdv-form-dither').addEventListener('change', () => {
+		document.querySelector('#app-select-dither').addEventListener('change', () => {
 			this.setDither();
 		});
 	}
@@ -141,7 +141,7 @@ class pdvPreview {
 	}
 
 	setVideo() {
-		const fileInput = document.querySelector('.pdv-form-file')
+		const fileInput = document.querySelector('#app-input-file')
 		if (fileInput.files.length) {
 			this.video.src = URL.createObjectURL(fileInput.files[0]);
 			this.video.onload = function() {
@@ -152,7 +152,7 @@ class pdvPreview {
 	}
 
 	setDither() {
-		const select = document.querySelector('.pdv-form-dither')
+		const select = document.querySelector('#app-select-dither')
 		this.filter = select.options[select.selectedIndex].value;
 	}
 

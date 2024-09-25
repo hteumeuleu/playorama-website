@@ -26,7 +26,7 @@
 .app-preview-canvas,
 .app-preview-video {
 	position: relative;
-	display: block;
+	display: flex;
 	width: 100%;
 	height: auto;
 	aspect-ratio: 400 / 240;
@@ -36,32 +36,49 @@
 	grid-column: 1 / 2;
 }
 
-.app-preview-canvas {
+.app-preview-video {
 	object-fit: cover;
 	opacity: 0;
 	transition: opacity linear 0.1s;
 }
 
-.app-preview:hover .app-preview-canvas,
-.app-preview-video {
+.app-preview-canvas,
+.app-preview:hover .app-preview-video[controls].is-visible-on-hover,
+.app-preview-video[controls]:focus {
 	opacity: 0.8;
 }
 
 .app-toolbar {
 	display: flex;
-	flex-wrap: wrap;
 	margin-bottom: 1rem;
-	gap: 0.5rem;
+	column-gap: rem(8px);
+	row-gap: rem(32px);
 	width: 100%;
 	justify-content: space-between;
 
-	[disabled] ~ * {
-		display: none;
+	@media only screen and (max-width: rem(480px)) {
+		flex-direction: column;
 	}
 
 	span {
 		display: flex;
 		gap: 0.5rem;
+	}
+
+	select {
+		font-family: inherit;
+		font-size: inherit;
+		min-height: rem(32px);
+		padding-inline: rem(8px);
+	}
+
+	input[type="radio"] {
+		width: rem(16px);
+		height: rem(16px);
+	}
+
+	input[type="file"] {
+		font-size: inherit;
 	}
 }
 
@@ -73,9 +90,19 @@
 
 .app-toolbar-field {
 	display: flex;
+	align-items: center;
 	gap: rem(8px);
 }
 
 .app-toolbar-field-label {
 	font-weight: bold;
+}
+
+.app-toolbar-field-file {
+	max-width: rem(280px);
+	overflow: hidden;
+}
+
+.app-message-value {
+	font-variant-numeric: tabular-nums;
 }
