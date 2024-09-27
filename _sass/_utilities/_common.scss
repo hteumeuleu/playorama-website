@@ -9,6 +9,10 @@
 	flex-grow: 1;
 	display: flex;
 	flex-direction: column;
+
+	@media only screen and (min-width: rem(800px)) {
+		min-height: calc(100vh - #{rem(32px)} - #{rem(72px)} - #{rem(72px)});
+	}
 }
 
 .wrapper {
