@@ -7,6 +7,7 @@
 		font-size: rem(20px);
 		line-height: 1.1;
 		color: #000;
+		text-wrap: balance;
 
 		h1 {
 			font-weight: 900;
@@ -19,9 +20,11 @@
 		}
 	}
 	.features-list {
-		margin-block: rem(24px);
-		text-align: center;
-		list-style-position: inside;
+		margin: rem(24px) auto;
+		text-align: left;
+		max-width: fit-content;
+		list-style-position: outside;
+		padding-left: 1.5em;
 
 		li:not(:last-child) {
 			margin-bottom: rem(4px);
