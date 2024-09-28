@@ -1,7 +1,7 @@
 class pdDevice {
 
 	constructor() {
-		this.warning = document.querySelector('.app-notice');
+		this.warning = document.querySelector('.app-warning');
 		this.streamButton = document.querySelector('#app-btn-stream');
 		this.webcamButton = document.querySelector('#app-btn-webcam');
 		this.screenButton = document.querySelector('#app-btn-screen');
@@ -9,6 +9,7 @@ class pdDevice {
 			this.streamButton.setAttribute('disabled', 'disabled');
 			this.warning.style.display = 'block';
 		} else {
+			this.streamButton.removeAttribute('disabled');
 			this.warning.remove();
 		}
 		this.addEvents();

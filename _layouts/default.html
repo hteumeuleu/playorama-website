@@ -9,7 +9,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8" />
-	<title>{{ page.title }} - Playorama</title>
+	<title>{{ page.title }}{%- if slug != "home" -%} - Playorama{%- endif -%}</title>
 	<link rel="stylesheet" href="{{ 'assets/css/style.css?v=' | append: timestamp | relative_url }}" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<meta property="og:type" content="website" />
