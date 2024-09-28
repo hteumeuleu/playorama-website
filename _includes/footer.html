@@ -4,9 +4,13 @@
 			Made in France by <a href="https://mastodon.social/@HTeuMeuLeu">@HTeuMeuLeu</a>
 		</p>
 		<div class="bubble">
-			{%- if page.thanks == true -%}
+			{%- if slug == "encoder" -%}
 			<p>
-				Huge thanks to <a href="https://twitter.com/rakujira">rakujira</a> for his personal help and his <a href="https://github.com/jaames/playdate-reverse-engineering">Playdate reverse engineering</a>. And thanks to <a href="https://twitter.com/davehayden">Dave Hayden</a> for his <a href="https://devforum.play.date/t/video-encoder-work-in-progress-mac-only/1390/6">1bitvideo</a> app.
+				Huge thanks to <a href="https://github.com/jaames">@jaames</a> for his personal help and his <a href="https://github.com/cranksters/playdate-reverse-engineering">Playdate reverse engineering</a>. And thanks to <a href="https://twitter.com/davehayden">Dave Hayden</a> for his <a href="https://devforum.play.date/t/video-encoder-work-in-progress-mac-only/1390/6">1bitvideo</a> app.
+			</p>
+			{%- elsif slug == "stream" -%}
+			<p>
+				Huge thanks to <a href="https://github.com/jaames">@jaames</a> for his <a href="https://github.com/cranksters/pd-usb"><code>pd-usb</code></a> library.
 			</p>
 			{%- endif -%}
 			<p>
