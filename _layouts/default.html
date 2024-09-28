@@ -17,7 +17,7 @@
 	<meta name="color-scheme" content="light dark" />
 	{% if slug == "encoder" %}
 	<script src="{{ 'assets/js/encoder.js?v=' | append: timestamp | relative_url }}"></script>
-	{% else if slug == "stream" %}
+	{% elsif slug == "stream" %}
 	<script src="{{ 'assets/js/stream.js?v=' | append: timestamp | relative_url }}"></script>
 	{% endif %}
 </head>
