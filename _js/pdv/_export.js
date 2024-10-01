@@ -13,7 +13,7 @@ class pdvExport {
 
 	downloadHandler() {
 		if(typeof fflate == 'undefined') {
-			this.addZlibScript(() => {
+			this.addThirdPartyScripts(() => {
 				this.download();
 			});
 		} else {
@@ -22,6 +22,12 @@ class pdvExport {
 	}
 
 	download() {
+		// Use MP4Box
+		let mp4boxfile = MP4Box.createFile();
+		mp4boxfile.onError = (e) => { console.debug(e); };
+		mp4boxfile.onReady = (info) => { console.debug(info); };
+		console.log(mp4boxfile);
+
 		// Get file name
 		let filename = 'sample.pdv';
 		const fileInput = document.querySelector('#app-input-file')
@@ -48,15 +54,19 @@ class pdvExport {
 		});
 	}
 
-	addZlibScript(callback) {
-		const script = document.createElement('script');
-		script.src = '/assets/js/fflate.min.js';
-		document.body.append(script);
-
-		script.addEventListener('load', e => {
-			if(callback) {
-				callback();
-			}
+	addThirdPartyScripts(callback) {
+		const script1 = document.createElement('script');
+		script1.src = '/assets/js/fflate.min.js';
+		document.body.append(script1);
+		script1.addEventListener('load', e1 => {
+			const script2 = document.createElement('script');
+			script2.src = '/assets/js/mp4box.all.js';
+			document.body.append(script2);
+			script2.addEventListener('load', e2 => {
+				if(callback) {
+					callback();
+				}
+			});
 		});
 	}
 
