@@ -60,11 +60,6 @@
 		flex-direction: column;
 	}
 
-	span {
-		display: flex;
-		gap: 0.5rem;
-	}
-
 	select {
 		font-family: inherit;
 		font-size: inherit;
@@ -103,6 +98,19 @@
 	overflow: hidden;
 }
 
+.app-message {
+	text-align: right;
+}
+
 .app-message-value {
+	display: block;
+	text-align: right;
 	font-variant-numeric: tabular-nums;
+}
+
+.app-toolbar-actions {
+	display: flex;
+	flex-direction: column;
+	gap: rem(8px);
+	text-align: right;
 }

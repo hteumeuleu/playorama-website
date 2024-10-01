@@ -20,7 +20,7 @@ permalink: /encoder/
 				<input id="app-input-file" class="app-toolbar-field-file" type="file" accept="video/*" />
 			</div>
 			<div class="app-toolbar-field">
-				<label class="app-toolbar-field-label" for="app-select-dither">Dither</label>
+				<label class="app-toolbar-field-label" for="app-select-dither">Dither:</label>
 				<select class="app-toolbar-field-dither" id="app-select-dither">
 					<option value="threshold">Threshold</option>
 					<option value="bayer2" disabled>Bayer 2&times;2</option>
@@ -38,7 +38,7 @@ permalink: /encoder/
 				</select>
 			</div>
 			<div class="app-toolbar-field">
-				<span class="app-toolbar-field-label">Scale to fit</span>
+				<span class="app-toolbar-field-label">Scale to fit:</span>
 				<div>
 					<input type="radio" name="scale" value="inside" id="input-scale-inside" />
 					<label for="input-scale-inside">inside</label>
@@ -49,12 +49,12 @@ permalink: /encoder/
 				</div>
 			</div>
 		</div>
-		<div>
+		<div class="app-toolbar-actions">
 			<div>
 				<button id="app-btn-download" class="btn btn--accent" type="button" class="button">Download</button>
 			</div>
 			<div class="app-message" hidden>
-				<p>Frames processed: <span class="app-message-value"></span></p>
+				<p><b>Frames processed:</b> <span class="app-message-value"></span></p>
 			</div>
 		</div>
 	</form>
