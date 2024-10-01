@@ -60,6 +60,20 @@ class pdvExport {
 		});
 	}
 
+	requestFrame(callback) {
+		if(HTMLVideoElement.prototype.requestVideoFrameCallback) {
+			const video = document.querySelector('.app-preview-video');
+			if(video) {
+				console.log("requestVideoFrameCallback");
+				video.requestVideoFrameCallback(callback);
+			} else {
+				window.requestAnimationFrame(callback);
+			}
+		} else {
+			window.requestAnimationFrame(callback);
+		}
+	}
+
 	async getBlob() {
 		return new Promise(function(resolve, reject) {
 			let width = 400;
@@ -121,12 +135,12 @@ class pdvExport {
 						if(currentFrame < frames) {
 							// Update current frame
 							currentFrame++;
-							window.requestAnimationFrame(doSomethingWithTheFrame)
+							that.requestFrame(doSomethingWithTheFrame)
 						} else {
-							window.requestAnimationFrame(doEndOfFile)
+							that.requestFrame(doEndOfFile)
 						}
 					} else {
-						window.requestAnimationFrame(doSomethingWithTheFrame)
+						that.requestFrame(doSomethingWithTheFrame)
 					}
 				}
 
