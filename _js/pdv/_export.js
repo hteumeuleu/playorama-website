@@ -22,11 +22,38 @@ class pdvExport {
 	}
 
 	download() {
-		// Use MP4Box
-		let mp4boxfile = MP4Box.createFile();
-		mp4boxfile.onError = (e) => { console.debug(e); };
-		mp4boxfile.onReady = (info) => { console.debug(info); };
-		console.log(mp4boxfile);
+		// Set up a VideoDecoder.
+		let startTime = null
+		const decoder = new VideoDecoder({
+			output(frame) {
+				// Update statistics.
+				if (startTime == null) {
+					startTime = performance.now();
+				} else {
+					const elapsed = (performance.now() - startTime) / 1000;
+					const fps = ++frameCount / elapsed;
+					console.debug(`${fps.toFixed(0)} fps`)
+				}
+
+				// Schedule the frame to be rendered.
+				renderFrame(frame);
+			},
+			error(e) {
+				setStatus("decode", e);
+			}
+		});
+
+		// Fetch and demux the media data.
+		const demuxer = new MP4Demuxer(dataUri, {
+			onConfig(config) {
+				console.debug(`${config.codec} @ ${config.codedWidth}x${config.codedHeight}`);
+				decoder.configure(config);
+			},
+			onChunk(chunk) {
+				decoder.decode(chunk);
+			},
+			setStatus
+		});
 
 		// Get file name
 		let filename = 'sample.pdv';
@@ -60,7 +87,7 @@ class pdvExport {
 		document.body.append(script1);
 		script1.addEventListener('load', e1 => {
 			const script2 = document.createElement('script');
-			script2.src = '/assets/js/mp4box.all.js';
+			script2.src = '/assets/js/mp4box.all.min.js';
 			document.body.append(script2);
 			script2.addEventListener('load', e2 => {
 				if(callback) {
