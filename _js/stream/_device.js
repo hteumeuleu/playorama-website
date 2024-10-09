@@ -23,11 +23,44 @@ class pdDevice {
 				this.isStreaming = true
 			}
 			if(this.isStreaming) {
-				this.connect().then(() => {
-					app.preview.video.play()
-					this.streamButton.innerText = 'Stop streaming';
-					this.send();
-				});
+				let device;
+				navigator.usb
+					.requestDevice({ filters: [{ vendorId: 0x1331, productId: 0x5740 }] })
+					.then((selectedDevice) => {
+						device = selectedDevice;
+						console.log(device.productName); // "Playdate"
+						console.log(device.manufacturerName); // "Panic Inc"
+						console.log(device.usbVersionMajor, device.usbVersionMinor, device.usbVersionSubminor);
+						return device.open(); // Begin a session.
+					})
+					.then(() => device.selectConfiguration(1))
+					.then(() => { console.log(device.configuration); return device; })
+					.then(() => device.claimInterface(1))
+					.then(() => {
+						const command = 'help\n';
+						console.log(command);
+						device.controlTransferOut({
+							requestType: 'vendor',
+							recipient: 'other',
+							request: command,
+							value: 0x00,
+							index: 0x01
+						});
+					}) // Ready to receive data
+					.then(() => device.transferIn(1, 64))
+					.then(result => {
+						console.log("result", result);
+						const decoder = new TextDecoder();
+						console.log('Received: ' + decoder.decode(result.data));
+					})
+					.then(() => device.releaseInterface(1))
+					.then(() => device.close())
+					.catch(error => { console.error(error); });
+				// this.connect().then(() => {
+				// 	app.preview.video.play()
+				// 	this.streamButton.innerText = 'Stop streaming';
+				// 	this.send();
+				// });
 			} else {
 				this.streamButton.innerText = 'Start streaming';
 				app.preview.video.pause()
