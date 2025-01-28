@@ -2,30 +2,63 @@
 	.main > .wrapper { margin:auto; max-width:unset; }
 
 	.videos {
-		display: flex;
-		justify-content: center;
+		display: grid;
+		justify-content: flex-start;
 		flex-wrap: wrap;
 		list-style: none;
 		gap: rem(20px);
+		padding-inline: rem(4px);
+		grid-template-columns: repeat(1, 1fr);
+
+		@media only screen and (min-width: rem(480px)) {
+			grid-template-columns: repeat(2, 1fr);
+		}
+
+		@media only screen and (min-width: rem(1040px)) {
+			grid-template-columns: repeat(3, 1fr);
+		}
+
+		@media only screen and (min-width: rem(1380px)) {
+			grid-template-columns: repeat(4, 1fr);
+		}
 	}
 
 	.video {
 		position: relative;
 		display: flex;
 		flex-direction: column;
-		max-width: rem(320px);
+		max-width: calc(100vw - #{rem(40px)});
 		flex-shrink: 1;
-		width: 25%;
+
+		@media only screen and (min-width: rem(480px)) {
+			max-width: calc((100vw - #{rem(60px)}) / 2);
+		}
+
+		@media only screen and (min-width: rem(1040px)) {
+			max-width: calc((100vw - #{rem(80px)}) / 3);
+		}
+
+		@media only screen and (min-width: rem(1380px)) {
+			max-width: calc((100vw - #{rem(100px)}) / 4);
+		}
+	}
+
+	.video-media {
+		position: relative;
+		display: grid;
+		justify-content: center;
+		align-items: center;
+		overflow: hidden;
+		border-radius: rem(10px);
+		margin-bottom: rem(4px);
+		aspect-ratio: 400 / 240;
 	}
 
 	.video-img {
 		display: block;
-		margin-bottom: rem(4px);
 		border-radius: rem(12px);
-		width: 100%;
+		width: rem(400px);
 		height: auto;
-		object-fit: cover;
-		aspect-ratio: 400 / 240;
 	}
 
 	.video-title {
@@ -42,7 +75,7 @@
 	.video-duration {
 		position: absolute;
 		right: rem(8px);
-		top: rem(162px);
+		bottom: rem(8px);
 		height: rem(20px);
 		color: #fff;
 		border-radius: rem(4px);
